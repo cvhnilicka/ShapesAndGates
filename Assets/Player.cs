@@ -29,6 +29,10 @@ public class Player : MonoBehaviour
     [SerializeField] Mesh sphere;
     [SerializeField] Mesh cube;
 
+    [Header("Materials")]
+    [SerializeField] Material blue;
+    [SerializeField] Material green;
+
     private Mesh currMesh;
 
 
@@ -37,6 +41,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         currMesh = cube;
+        ChangeToGreen();
     }
 
     // Update is called once per frame
@@ -44,6 +49,7 @@ public class Player : MonoBehaviour
     {
         ProcessTranslation();
         ProcessShape();
+        ProcessColor();
     }
 
     private void ProcessTranslation()
@@ -90,6 +96,35 @@ public class Player : MonoBehaviour
                 ChangeToCube();
             }
         }
+    }
+
+    private void ProcessColor()
+    {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            print("should be changing color");
+            if (gameObject.GetComponentInChildren<MeshRenderer>().material.color == green.color)
+            {
+                ChangeToBlue();
+            }
+            else
+            {
+                print("changing to green");
+                ChangeToGreen();
+            }
+        }
+    }
+
+    private void ChangeToGreen()
+    {
+        var childRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
+        childRenderer.material = green;
+    }
+
+    private void ChangeToBlue()
+    {
+        var childRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
+        childRenderer.material = blue;
     }
 
 
