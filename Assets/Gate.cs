@@ -6,8 +6,12 @@ public class Gate : MonoBehaviour
 {
 
     public enum Color { Blue, Green };
+    public enum GateType {  Sphere, Cube, Capsule }
 
-    [SerializeField] public Color currColor;
+
+
+    [SerializeField] Color currColor;
+    [SerializeField] GateType type;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +34,15 @@ public class Gate : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         print("collision from gate");
+    }
+
+    public Color GetColor()
+    {
+        return this.currColor;
+    }
+
+    public GateType GetGateType()
+    {
+        return this.type;
     }
 }

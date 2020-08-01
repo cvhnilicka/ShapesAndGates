@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -28,12 +29,14 @@ public class Player : MonoBehaviour
     [Header("Meshes")]
     [SerializeField] Mesh sphere;
     [SerializeField] Mesh cube;
+    [SerializeField] Mesh capsule;
 
     [Header("Materials")]
     [SerializeField] Material blue;
     [SerializeField] Material green;
 
     private Mesh currMesh;
+    private Gate.Color currColor;
 
 
 
@@ -83,35 +86,39 @@ public class Player : MonoBehaviour
         currMesh = cube;
     }
 
+
+    private void ChangeToCapsule()
+    {
+        var childMesh = gameObject.GetComponentInChildren<MeshFilter>();
+        childMesh.mesh = capsule;
+        currMesh = capsule;
+    }
+
     private void ProcessShape()
     {
-        if (Input.GetButtonDown("Fire"))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (currMesh == cube)
-            {
-                ChangeToSphere();
-            }
-            else
-            {
-                ChangeToCube();
-            }
+            ChangeToSphere();
+        } 
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ChangeToCube();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ChangeToCapsule();
         }
     }
 
     private void ProcessColor()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire"))
         {
-            print("should be changing color");
-            if (gameObject.GetComponentInChildren<MeshRenderer>().material.color == green.color)
-            {
-                ChangeToBlue();
-            }
-            else
-            {
-                print("changing to green");
-                ChangeToGreen();
-            }
+            ChangeToGreen();
+        }
+        else if (Input.GetButtonDown("Fire2"))
+        {
+            ChangeToBlue();
         }
     }
 
@@ -119,73 +126,34 @@ public class Player : MonoBehaviour
     {
         var childRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
         childRenderer.material = green;
+        currColor = Gate.Color.Green;
     }
 
     private void ChangeToBlue()
     {
         var childRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
         childRenderer.material = blue;
+        currColor = Gate.Color.Blue;
     }
 
 
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        print("Player Collided with something");
-        print(collision.collider.gameObject.tag);
-
-        switch(collision.collider.gameObject.tag)
-        {
-            case "SquareGate": if (currMesh == cube)
-                {
-                    print("yay!");
-                    //print(collision.collider.)
-                } 
-                else
-                {
-                    print("Should be a cube");
-                }
-                break;
-            case "SphereGate": if (currMesh == sphere)
-                {
-                    print("sphere!!!!");
-                }
-            else
-                {
-                    print(" dont be a square!");
-                }
-                break;
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-        var parGate = other.GetComponentInParent<Gate>();
-        print(parGate.currColor);
-
-        switch (other.gameObject.tag)
+        Gate parGate = other.GetComponentInParent<Gate>();
+        switch (parGate.GetGateType())
         {
-            case "SquareGate":
-                if (currMesh == cube)
-                {
-                    print("yay!");
-                    //print(collision.collider.)
-                }
-                else
-                {
-                    print("Should be a cube");
-                }
-                break;
-            case "SphereGate":
-                if (currMesh == sphere)
-                {
-                    print("sphere!!!!");
-                }
-                else
-                {
-                    print(" dont be a square!");
-                }
+            case Gate.GateType.Capsule: 
+            case Gate.GateType.Sphere:
+            case Gate.GateType.Cube:
+            default: PrintTriggerResult(parGate);
                 break;
         }
+    }
+
+    private void PrintTriggerResult(Gate expected)
+    {
+        print("Expected Type: " + expected.GetGateType() + "Expected Color: " + expected.GetColor());
+        print("Got Type: " + this.currMesh.name + "Got Color: " + this.currColor);
     }
 }
