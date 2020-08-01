@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Gate : MonoBehaviour
@@ -16,7 +17,8 @@ public class Gate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AddNonTriggerBoxCollider();
+        //AddMeshCollider();
+        SetChildrenTags();
     }
 
     // Update is called once per frame
@@ -25,10 +27,11 @@ public class Gate : MonoBehaviour
 
     }
 
-    private void AddNonTriggerBoxCollider()
+    private void AddMeshCollider()
     {
-        BoxCollider collider = gameObject.AddComponent<BoxCollider>();
-        collider.isTrigger = false;
+        MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
+        meshCollider.convex = true;
+        meshCollider.isTrigger = true;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,5 +47,13 @@ public class Gate : MonoBehaviour
     public GateType GetGateType()
     {
         return this.type;
+    }
+
+    private void SetChildrenTags()
+    {
+        foreach (Transform child in transform)
+        {
+            child.tag = gameObject.tag;
+        }
     }
 }

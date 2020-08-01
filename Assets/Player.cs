@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -37,6 +38,8 @@ public class Player : MonoBehaviour
 
     private Mesh currMesh;
     private Gate.Color currColor;
+
+    private bool _triggered;
 
 
 
@@ -140,20 +143,62 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Gate parGate = other.GetComponentInParent<Gate>();
+        if (_triggered)
+        {
+            return;
+        }
+
+        _triggered = true; // bool trigger to avoid multiple triggers
+
+
+        if (other.tag == "Gate")
+        {
+            ProcessGateTrigger(other);
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!_triggered)
+        {
+            return; 
+        }
+        _triggered = false;
+    }
+
+    private void ProcessGateTrigger(Collider gateTrigger)
+    {
+        Gate parGate = gateTrigger.GetComponentInParent<Gate>();
         switch (parGate.GetGateType())
         {
-            case Gate.GateType.Capsule: 
+            case Gate.GateType.Capsule:
             case Gate.GateType.Sphere:
             case Gate.GateType.Cube:
-            default: PrintTriggerResult(parGate);
+            default:
+                PrintTriggerResult(parGate);
                 break;
         }
     }
 
     private void PrintTriggerResult(Gate expected)
     {
-        print("Expected Type: " + expected.GetGateType() + "Expected Color: " + expected.GetColor());
-        print("Got Type: " + this.currMesh.name + "Got Color: " + this.currColor);
+        if (expected.GetColor() == this.currColor &&
+            expected.GetGateType().ToString() == this.currMesh.name)
+        {
+            print("CORRECT");
+        }
+        else
+        {
+            print("Expected Type: " + expected.GetGateType() + "Expected Color: " + expected.GetColor());
+            print("Got Type: " + this.currMesh.name + "Got Color: " + this.currColor);
+        }
+
+       
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("collision from gate");
     }
 }
