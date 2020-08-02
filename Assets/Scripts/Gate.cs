@@ -18,7 +18,6 @@ public class Gate : MonoBehaviour
 
     [Header("FX")]
     [SerializeField] GameObject successFX;
-    [SerializeField] AudioClip successSound;
 
     // Start is called before the first frame update
     void Start()
@@ -70,10 +69,8 @@ public class Gate : MonoBehaviour
 
     private void OnDestroy()
     {
-        print("Gate : " + this.gameObject.name + " has been called to destroy");
-        //success.Play();
+        //print("Gate : " + this.gameObject.name + " has been called to destroy");
         // TODO Here can go the cleanup and animation calling for destroying the gate
         GameObject newFx = Instantiate(successFX, this.transform.position, Quaternion.identity);
-        audioSource.PlayOneShot(successSound);
     }
 }

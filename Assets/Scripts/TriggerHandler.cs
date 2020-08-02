@@ -8,12 +8,12 @@ public class TriggerHandler : MonoBehaviour
     private bool _triggered;
     private void OnTriggerEnter(Collider other)
     {
-        if (_triggered)
-        {
-            return;
-        }
+        //if (_triggered)
+        //{
+        //    return;
+        //}
 
-        _triggered = true; // bool trigger to avoid multiple triggers
+        //_triggered = true; // bool trigger to avoid multiple triggers
 
 
         if (other.tag == "Gate")
@@ -23,14 +23,16 @@ public class TriggerHandler : MonoBehaviour
 
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (!_triggered)
-        {
-            return;
-        }
-        _triggered = false;
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    print("trigger exit");
+    //    if (!_triggered)
+    //    {
+    //        print("TRIGGER OFF");
+    //        return;
+    //    }
+    //    _triggered = false;
+    //}
 
     private void ProcessGateTrigger(Collider gateTrigger)
     {
@@ -56,7 +58,6 @@ public class TriggerHandler : MonoBehaviour
         if (expected.GetMatColor() == GetMatColor() &&
             expected.GetGateType().ToString() == GetComponent<Player>().GetMesh().name)
         {
-            print("CORRECT");
             DestroyProperGate(expected); // todo probs want to change variable name
             //PrintExpected(expected);
         }
@@ -78,10 +79,5 @@ public class TriggerHandler : MonoBehaviour
     {
         print("Expected Type: " + expected.GetGateType() + "Expected Color: " + expected.GetColor());
         print("Got Type: " + GetComponent<Player>().GetMesh().name + "Got Color: " + GetMatColor());
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        print("collision from gate");
     }
 }

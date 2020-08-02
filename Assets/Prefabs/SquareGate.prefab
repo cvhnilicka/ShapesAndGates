@@ -142,7 +142,6 @@ MonoBehaviour:
   type: 0
   successFX: {fileID: 1424816280877768654, guid: b4bd0fa7d4f6ce948aec8f3e7049c77a,
     type: 3}
-  successSound: {fileID: 8300000, guid: c904cf4457d116d4289529a177eca7a8, type: 3}
 --- !u!82 &865649402812471133
 AudioSource:
   m_ObjectHideFlags: 0
