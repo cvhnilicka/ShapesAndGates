@@ -10,9 +10,12 @@ public class Gate : MonoBehaviour
     public enum GateType {  Sphere, Cube, Capsule }
 
 
-
+    [Header("General")]
     [SerializeField] Color currColor;
     [SerializeField] GateType type;
+
+    [Header("Particle FX")]
+    [SerializeField] GameObject successFX;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,11 @@ public class Gate : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         print("collision from gate");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("Trigger on gate script");   
     }
 
     public Color GetColor()
@@ -65,5 +73,13 @@ public class Gate : MonoBehaviour
     public UnityEngine.Color GetMatColor()
     {
         return this.gameObject.GetComponentInChildren<MeshRenderer>().material.color;
+    }
+
+    private void OnDestroy()
+    {
+        print("Gate : " + this.gameObject.name + " has been called to destroy");
+        // TODO Here can go the cleanup and animation calling for destroying the gate
+        GameObject newFx = Instantiate(successFX, this.transform.position, Quaternion.identity);
+        newFx.transform.parent = transform.parent;
     }
 }

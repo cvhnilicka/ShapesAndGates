@@ -139,3 +139,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currColor: 0
   type: 0
+  successFX: {fileID: 1424816280877768654, guid: b4bd0fa7d4f6ce948aec8f3e7049c77a,
+    type: 3}

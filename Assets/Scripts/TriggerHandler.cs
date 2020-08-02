@@ -57,6 +57,7 @@ public class TriggerHandler : MonoBehaviour
             expected.GetGateType().ToString() == GetComponent<Player>().GetMesh().name)
         {
             print("CORRECT");
+            DestroyProperGate(expected); // todo probs want to change variable name
             //PrintExpected(expected);
         }
         else
@@ -65,6 +66,12 @@ public class TriggerHandler : MonoBehaviour
         }
 
 
+    }
+
+    private void DestroyProperGate(Gate toDestory)
+    {
+        Destroy(toDestory.gameObject); 
+        // todo may need other cleanup stuff here
     }
 
     private void PrintExpected(Gate expected)
