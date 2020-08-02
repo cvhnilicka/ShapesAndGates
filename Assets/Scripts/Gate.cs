@@ -6,6 +6,8 @@ using UnityEngine;
 public class Gate : MonoBehaviour
 {
 
+    AudioSource audioSource;
+
     public enum Color { Blue, Green };
     public enum GateType {  Sphere, Cube, Capsule }
 
@@ -14,13 +16,14 @@ public class Gate : MonoBehaviour
     [SerializeField] Color currColor;
     [SerializeField] GateType type;
 
-    [Header("Particle FX")]
+    [Header("FX")]
     [SerializeField] GameObject successFX;
+    [SerializeField] AudioClip successSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        //AddMeshCollider();
+        audioSource = GetComponent<AudioSource>();
         SetChildrenTags();
     }
 
@@ -35,16 +38,6 @@ public class Gate : MonoBehaviour
         MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
         meshCollider.convex = true;
         meshCollider.isTrigger = true;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        print("collision from gate");
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        print("Trigger on gate script");   
     }
 
     public Color GetColor()
@@ -78,8 +71,9 @@ public class Gate : MonoBehaviour
     private void OnDestroy()
     {
         print("Gate : " + this.gameObject.name + " has been called to destroy");
+        //success.Play();
         // TODO Here can go the cleanup and animation calling for destroying the gate
         GameObject newFx = Instantiate(successFX, this.transform.position, Quaternion.identity);
-        newFx.transform.parent = transform.parent;
+        audioSource.PlayOneShot(successSound);
     }
 }

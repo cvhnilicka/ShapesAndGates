@@ -7,14 +7,17 @@ public class OscillatingColor : MonoBehaviour
     [SerializeField] Material blue;
     [SerializeField] Material pink;
 
+    [SerializeField] float timedelay = 3f;
+
     private int numChildren;
     private int currIndex;
+
     // Start is called before the first frame update
     void Start()
     {
         numChildren = transform.childCount;
         currIndex = 1;
-        InvokeRepeating("GetSubChildren", 1.0f, 1.0f);
+        InvokeRepeating("GetSubChildren", 1.0f, timedelay);
 
     }
 
