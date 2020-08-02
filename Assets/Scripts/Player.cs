@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
 {
     // Variables n stuff
     [Header("General")]
-    [Tooltip("In ms^1")] [SerializeField] float xSpeed = 11f;
-    [Tooltip("In ms^1")] [SerializeField] float ySpeed = 9f;
+    [Tooltip("In ms^1")] [SerializeField] float xSpeed = 35f;
+    [Tooltip("In ms^1")] [SerializeField] float ySpeed = 30f;
     [SerializeField] GameObject[] lazers;
 
 
@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     private Mesh currMesh;
     private Gate.Color currColor;
+
+    private string colorString;
 
     private bool _triggered;
 
@@ -70,8 +72,8 @@ public class Player : MonoBehaviour
         float yFrameOffset = verticalThrow * ySpeed * Time.deltaTime;
         float rawY = transform.localPosition.y + yFrameOffset;
 
-        transform.localPosition = new Vector3(Mathf.Clamp(rawX, -5.25f, 5.25f),
-            Mathf.Clamp(rawY, -3.25f, 3.25f),
+        transform.localPosition = new Vector3(Mathf.Clamp(rawX, -30f, 30f),
+            Mathf.Clamp(rawY, -15f, 15f),
             transform.localPosition.z);
     }
 
@@ -87,6 +89,7 @@ public class Player : MonoBehaviour
         var childMesh = gameObject.GetComponentInChildren<MeshFilter>();
         childMesh.mesh = cube;
         currMesh = cube;
+        
     }
 
 
@@ -130,6 +133,7 @@ public class Player : MonoBehaviour
         var childRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
         childRenderer.material = green;
         currColor = Gate.Color.Green;
+        colorString = green.name;
     }
 
     private void ChangeToBlue()
@@ -137,6 +141,7 @@ public class Player : MonoBehaviour
         var childRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
         childRenderer.material = blue;
         currColor = Gate.Color.Blue;
+        colorString = blue.name;
     }
 
 
@@ -181,20 +186,31 @@ public class Player : MonoBehaviour
         }
     }
 
+    private Color GetMatColor()
+    {
+        return this.gameObject.GetComponentInChildren<MeshRenderer>().material.color;
+    }
+
     private void PrintTriggerResult(Gate expected)
     {
-        if (expected.GetColor() == this.currColor &&
+        if (expected.GetMatColor() == GetMatColor() &&
             expected.GetGateType().ToString() == this.currMesh.name)
         {
             print("CORRECT");
+            //PrintExpected(expected);
         }
         else
         {
-            print("Expected Type: " + expected.GetGateType() + "Expected Color: " + expected.GetColor());
-            print("Got Type: " + this.currMesh.name + "Got Color: " + this.currColor);
+            print("INCORRECT");
         }
 
        
+    }
+
+    private void PrintExpected(Gate expected)
+    {
+        print("Expected Type: " + expected.GetGateType() + "Expected Color: " + expected.GetColor());
+        print("Got Type: " + this.currMesh.name + "Got Color: " + this.currColor);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -56,4 +56,14 @@ public class Gate : MonoBehaviour
             child.tag = gameObject.tag;
         }
     }
+
+    public string GetMaterialName()
+    {
+        return this.gameObject.GetComponentInChildren<MeshRenderer>().material.name;
+    }
+
+    public UnityEngine.Color GetMatColor()
+    {
+        return this.gameObject.GetComponentInChildren<MeshRenderer>().material.color;
+    }
 }
