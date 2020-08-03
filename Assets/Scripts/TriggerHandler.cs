@@ -1,11 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TriggerHandler : MonoBehaviour
 {
+    [SerializeField] GameObject deathFx;
+
+    private float levelLoadDelay = 1.0f;
 
     private bool _triggered;
+    
     private void OnTriggerEnter(Collider other)
     {
         //if (_triggered)
@@ -43,9 +49,30 @@ public class TriggerHandler : MonoBehaviour
             case Gate.GateType.Sphere:
             case Gate.GateType.Cube:
             default:
-                PrintTriggerResult(parGate);
+                bool r = GetTriggerResult(parGate);
+                ProcessTriggerResult(r, parGate);
                 break;
         }
+    }
+
+    private void ProcessTriggerResult(bool success, Gate gate)
+    {
+        if (success)
+        {
+            DestroyProperGate(gate); // todo probs want to change variable name
+        }
+        else
+        {
+            // destory self
+            StartDeathSequence();
+        }
+    }
+
+    private void StartDeathSequence()
+    {
+        GameObject death = Instantiate(deathFx, this.transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        
     }
 
     private Color GetMatColor()
@@ -53,25 +80,24 @@ public class TriggerHandler : MonoBehaviour
         return this.gameObject.GetComponentInChildren<MeshRenderer>().material.color;
     }
 
-    private void PrintTriggerResult(Gate expected)
+    private bool GetTriggerResult(Gate expected)
     {
         if (expected.GetMatColor() == GetMatColor() &&
             expected.GetGateType().ToString() == GetComponent<Player>().GetMesh().name)
-        {
-            DestroyProperGate(expected); // todo probs want to change variable name
-            //PrintExpected(expected);
+        {    
+            return true;
         }
         else
         {
             print("INCORRECT");
+            return false;
         }
-
 
     }
 
     private void DestroyProperGate(Gate toDestory)
     {
-        Destroy(toDestory.gameObject); 
+        toDestory.StartDeathSequence(true); 
         // todo may need other cleanup stuff here
     }
 
