@@ -35,6 +35,7 @@ public class TriggerHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // used for non gate collisions
         StartDeathSequence();
     }
 
