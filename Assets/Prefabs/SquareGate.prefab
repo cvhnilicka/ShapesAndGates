@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 6512902829972798950}
   m_Layer: 0
   m_Name: SquareGate
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,6 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currColor: 0
-  type: 0
+  type: 1
   successFX: {fileID: 1424816280877768654, guid: b4bd0fa7d4f6ce948aec8f3e7049c77a,
     type: 3}

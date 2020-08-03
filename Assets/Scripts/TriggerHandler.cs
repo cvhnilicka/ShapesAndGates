@@ -89,7 +89,9 @@ public class TriggerHandler : MonoBehaviour
         }
         else
         {
-            print("INCORRECT");
+            print(expected.GetMatColor() == GetMatColor());
+            print(expected.GetGateType().ToString() == GetComponent<Player>().GetMesh().name);
+
             return false;
         }
 
