@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/NothingButSquares.unity
+    path: Assets/Scenes/Levels/NothingButSquares.unity
     guid: 714c65b3da5a94049931847d45d3ae81
   m_configObjects: {}
