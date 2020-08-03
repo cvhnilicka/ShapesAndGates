@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da79188aa4237df45a3a780c7b52cc4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 35
-  ySpeed: 30
+  xSpeed: 25
+  ySpeed: 25
   lazers: []
   positionPitchFactor: -7
   positionYawFactor: 7

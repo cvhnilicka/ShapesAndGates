@@ -7,8 +7,8 @@ public class TranslationController : MonoBehaviour
 
     // Variables n stuff
     [Header("General")]
-    [Tooltip("In ms^1")] [SerializeField] float xSpeed = 35f;
-    [Tooltip("In ms^1")] [SerializeField] float ySpeed = 30f;
+    [Tooltip("In ms^1")] [SerializeField] float xSpeed = 25f;
+    [Tooltip("In ms^1")] [SerializeField] float ySpeed = 25f;
     [SerializeField] GameObject[] lazers;
 
 
