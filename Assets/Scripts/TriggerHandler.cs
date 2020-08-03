@@ -25,8 +25,17 @@ public class TriggerHandler : MonoBehaviour
         if (other.tag == "Gate")
         {
             ProcessGateTrigger(other);
-        }
+        } 
+        //else
+        //{
+        //    StartDeathSequence();
+        //}
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        StartDeathSequence();
     }
 
     //private void OnTriggerExit(Collider other)
