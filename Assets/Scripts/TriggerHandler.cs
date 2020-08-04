@@ -127,5 +127,11 @@ public class TriggerHandler : MonoBehaviour
         timeline.Evaluate();
         gameObject.SetActive(true);
         timeline.Play();
+
+        Gate[] gates = FindObjectsOfType<Gate>();
+        foreach (Gate g in gates)
+        {
+            g.ReloadGameObject();
+        }
     }
 }
