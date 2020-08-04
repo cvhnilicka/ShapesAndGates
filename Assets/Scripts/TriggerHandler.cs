@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class TriggerHandler : MonoBehaviour
@@ -11,25 +12,30 @@ public class TriggerHandler : MonoBehaviour
     private float levelLoadDelay = 1.0f;
 
     private bool _triggered;
-    
+
+    DeathCounter deathCounter;
+
+    [SerializeField] PlayableDirector timeline;
+
+    private Vector3 originalPos;
+    private Quaternion origRotation;
+
+
+    private void Start()
+    {
+        deathCounter = FindObjectOfType<DeathCounter>();
+        originalPos = transform.position;
+        origRotation = transform.rotation;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        //if (_triggered)
-        //{
-        //    return;
-        //}
-
-        //_triggered = true; // bool trigger to avoid multiple triggers
-
 
         if (other.tag == "Gate")
         {
             ProcessGateTrigger(other);
         } 
-        //else
-        //{
-        //    StartDeathSequence();
-        //}
+
 
     }
 
@@ -38,17 +44,6 @@ public class TriggerHandler : MonoBehaviour
         // used for non gate collisions
         StartDeathSequence();
     }
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    print("trigger exit");
-    //    if (!_triggered)
-    //    {
-    //        print("TRIGGER OFF");
-    //        return;
-    //    }
-    //    _triggered = false;
-    //}
 
     private void ProcessGateTrigger(Collider gateTrigger)
     {
@@ -81,7 +76,13 @@ public class TriggerHandler : MonoBehaviour
     private void StartDeathSequence()
     {
         GameObject death = Instantiate(deathFx, this.transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        deathCounter.AddDeath();
+        // TODO NEED TO SOMEHOW RESET THE TRANSFORM TO ORIGINAL HERE
+        gameObject.SetActive(false);
+        gameObject.transform.SetPositionAndRotation(originalPos, origRotation);
+        Invoke("ReloadTimeline", .99f);
+        
+        //Destroy(gameObject);
         
     }
 
@@ -117,5 +118,14 @@ public class TriggerHandler : MonoBehaviour
     {
         print("Expected Type: " + expected.GetGateType() + "Expected Color: " + expected.GetColor());
         print("Got Type: " + GetComponent<Player>().GetMesh().name + "Got Color: " + GetMatColor());
+    }
+
+    private void ReloadTimeline()
+    {
+        timeline.time = 0;
+        timeline.Stop();
+        timeline.Evaluate();
+        gameObject.SetActive(true);
+        timeline.Play();
     }
 }

@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathFx: {fileID: 1424816280877768654, guid: 8b600eab8f8df9d4f98585a01959e72e, type: 3}
+  timeline: {fileID: 5307657969181088465, guid: 70cba8022bccb0f439c35b7ffd9ad99a,
+    type: 3}
 --- !u!1 &7579770694704531351
 GameObject:
   m_ObjectHideFlags: 0
