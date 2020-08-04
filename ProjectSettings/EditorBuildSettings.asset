@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MenuPractice.unity
+    path: Assets/Scenes/MenuScreens/MenuPractice 1.unity
+    guid: de79ae21508413e4bbcf2ea9dac5d455
+  - enabled: 1
+    path: Assets/Scenes/MenuScreens/LevelMenu.unity
     guid: 3ab6d9f449b820e41b39869e1d36ddb0
   - enabled: 1
     path: Assets/Scenes/Levels/ColorSwitchIntro.unity
