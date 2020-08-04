@@ -17,10 +17,15 @@ public class TriggerHandler : MonoBehaviour
 
     [SerializeField] PlayableDirector timeline;
 
+    private Vector3 originalPos;
+    private Quaternion origRotation;
+
 
     private void Start()
     {
         deathCounter = FindObjectOfType<DeathCounter>();
+        originalPos = transform.position;
+        origRotation = transform.rotation;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -74,6 +79,7 @@ public class TriggerHandler : MonoBehaviour
         deathCounter.AddDeath();
         // TODO NEED TO SOMEHOW RESET THE TRANSFORM TO ORIGINAL HERE
         gameObject.SetActive(false);
+        gameObject.transform.SetPositionAndRotation(originalPos, origRotation);
         Invoke("ReloadTimeline", .99f);
         
         //Destroy(gameObject);
