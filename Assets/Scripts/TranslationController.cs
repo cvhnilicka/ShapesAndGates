@@ -9,7 +9,6 @@ public class TranslationController : MonoBehaviour
     [Header("General")]
     [Tooltip("In ms^1")] [SerializeField] float xSpeed = 30f;
     [Tooltip("In ms^1")] [SerializeField] float ySpeed = 30f;
-    [SerializeField] GameObject[] lazers;
 
 
     [Header("Screen Position Dependant")]
