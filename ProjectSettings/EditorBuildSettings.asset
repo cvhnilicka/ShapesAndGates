@@ -12,18 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScreens/LevelMenu.unity
     guid: 3ab6d9f449b820e41b39869e1d36ddb0
   - enabled: 1
-    path: Assets/Scenes/Levels/ColorSwitchIntro.unity
+    path: Assets/Scenes/Levels/VerticleWorld/ColorSwitchIntro.unity
     guid: 5cdc5c4e50c1c46489ce002dd7ca98e6
   - enabled: 1
-    path: Assets/Scenes/Levels/GateSwitchingMonoColor.unity
+    path: Assets/Scenes/Levels/VerticleWorld/GateSwitchingMonoColor.unity
     guid: ce3ae63b21cb8df48b42907181465d2e
   - enabled: 1
-    path: Assets/Scenes/Levels/ColorSwitchOscillatingMonoshape.unity
+    path: Assets/Scenes/Levels/VerticleWorld/ColorSwitchOscillatingMonoshape.unity
     guid: 7f3446731b03a254596176a74b55958f
   - enabled: 1
-    path: Assets/Scenes/Levels/GateSwitchingMultiColor.unity
+    path: Assets/Scenes/Levels/VerticleWorld/GateSwitchingMultiColor.unity
     guid: 00fc39c815470204fb5e98fe862d5fbb
   - enabled: 1
-    path: Assets/Scenes/Levels/NothingButSquares.unity
+    path: Assets/Scenes/Levels/VerticleWorld/NothingButSquares.unity
     guid: 714c65b3da5a94049931847d45d3ae81
   m_configObjects: {}
