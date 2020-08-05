@@ -9,7 +9,6 @@ public class TranslationController : MonoBehaviour
     [Header("General")]
     [Tooltip("In ms^1")] [SerializeField] float xSpeed = 30f;
     [Tooltip("In ms^1")] [SerializeField] float ySpeed = 30f;
-    [SerializeField] GameObject[] lazers;
 
 
     [Header("Screen Position Dependant")]
@@ -20,6 +19,13 @@ public class TranslationController : MonoBehaviour
     [Header("Control Throw Dependant")]
     [SerializeField] float controlPitchFactor = -25f;
     [SerializeField] float controlRollFactor = -25f;
+
+    [Header("World Screen Bounds")]
+    [SerializeField] float xPosClamp;
+    [SerializeField] float xNegClamp;
+    [SerializeField] float yPosClamp;
+    [SerializeField] float yNegClamp;
+
 
 
     private float horizontalThrow;
@@ -50,8 +56,8 @@ public class TranslationController : MonoBehaviour
         float yFrameOffset = verticalThrow * ySpeed * Time.deltaTime;
         float rawY = transform.localPosition.y + yFrameOffset;
 
-        transform.localPosition = new Vector3(Mathf.Clamp(rawX, -30f, 30f),
-            Mathf.Clamp(rawY, -15f, 15f),
+        transform.localPosition = new Vector3(Mathf.Clamp(rawX, xNegClamp, xPosClamp),
+            Mathf.Clamp(rawY, yNegClamp, yPosClamp),
             transform.localPosition.z);
     }
 }

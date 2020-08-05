@@ -1526,6 +1526,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1038863308093613619, guid: 12d46285bb9958841a0841660ffdab48,
+        type: 3}
+      propertyPath: xPosClamp
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038863308093613619, guid: 12d46285bb9958841a0841660ffdab48,
+        type: 3}
+      propertyPath: xNegClamp
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038863308093613619, guid: 12d46285bb9958841a0841660ffdab48,
+        type: 3}
+      propertyPath: yPosClamp
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038863308093613619, guid: 12d46285bb9958841a0841660ffdab48,
+        type: 3}
+      propertyPath: yNegClamp
+      value: -15
+      objectReference: {fileID: 0}
     - target: {fileID: 4246910116069760864, guid: 12d46285bb9958841a0841660ffdab48,
         type: 3}
       propertyPath: timeline
