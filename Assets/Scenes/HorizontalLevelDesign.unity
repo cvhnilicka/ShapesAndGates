@@ -883,6 +883,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1038863308093613619, guid: 12d46285bb9958841a0841660ffdab48,
+        type: 3}
+      propertyPath: yPosClamp
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038863308093613619, guid: 12d46285bb9958841a0841660ffdab48,
+        type: 3}
+      propertyPath: yNegClamp
+      value: -38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038863308093613619, guid: 12d46285bb9958841a0841660ffdab48,
+        type: 3}
+      propertyPath: xPosClamp
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038863308093613619, guid: 12d46285bb9958841a0841660ffdab48,
+        type: 3}
+      propertyPath: xNegClamp
+      value: -80
+      objectReference: {fileID: 0}
     - target: {fileID: 7579770694408777590, guid: 12d46285bb9958841a0841660ffdab48,
         type: 3}
       propertyPath: m_LocalPosition.z

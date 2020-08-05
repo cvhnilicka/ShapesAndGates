@@ -21,6 +21,13 @@ public class TranslationController : MonoBehaviour
     [SerializeField] float controlPitchFactor = -25f;
     [SerializeField] float controlRollFactor = -25f;
 
+    [Header("World Screen Bounds")]
+    [SerializeField] float xPosClamp;
+    [SerializeField] float xNegClamp;
+    [SerializeField] float yPosClamp;
+    [SerializeField] float yNegClamp;
+
+
 
     private float horizontalThrow;
     private float verticalThrow;
@@ -50,8 +57,8 @@ public class TranslationController : MonoBehaviour
         float yFrameOffset = verticalThrow * ySpeed * Time.deltaTime;
         float rawY = transform.localPosition.y + yFrameOffset;
 
-        transform.localPosition = new Vector3(Mathf.Clamp(rawX, -30f, 30f),
-            Mathf.Clamp(rawY, -15f, 15f),
+        transform.localPosition = new Vector3(Mathf.Clamp(rawX, xNegClamp, xPosClamp),
+            Mathf.Clamp(rawY, yNegClamp, yPosClamp),
             transform.localPosition.z);
     }
 }
