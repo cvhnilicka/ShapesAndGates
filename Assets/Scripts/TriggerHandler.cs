@@ -39,10 +39,28 @@ public class TriggerHandler : MonoBehaviour
 
     }
 
+    // TODO: Need to do trigger/collision handling for success plate
+
     private void OnCollisionEnter(Collision collision)
     {
         // used for non gate collisions
-        StartDeathSequence();
+        switch (collision.gameObject.tag)
+        {
+            case "Finish":
+                Success();
+                break;
+            default:
+                StartDeathSequence();
+                break;
+        }
+
+        
+    }
+
+    private void Success()
+    {
+        print("success");
+        FindObjectOfType<LevelHandler>().LoadNextLevel();
     }
 
     private void ProcessGateTrigger(Collider gateTrigger)
