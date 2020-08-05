@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Gate : MonoBehaviour
 {
-
-    AudioSource audioSource;
-
     public enum Color { Blue, Green };
     public enum GateType {  Sphere, Cube, Capsule }
 
@@ -23,14 +21,12 @@ public class Gate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         SetChildrenTags();
     }
-
-    // Update is called once per frame
-    void Update()
+    // reloads the children to active
+    public void ReloadGameObject()
     {
-
+        SetChildrenActive(true);
     }
 
     private void AddMeshCollider()
@@ -78,7 +74,18 @@ public class Gate : MonoBehaviour
         {
             // death fx here if i want them
         }
-        Destroy(gameObject);
+        SetChildrenActive(false);
+        //gameObject.SetActive(false);
+        //Destroy(gameObject);
+    }
+    
+
+    private void SetChildrenActive(bool isActive)
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(isActive);
+        }
     }
 
 }

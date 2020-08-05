@@ -398,7 +398,7 @@ PrefabInstance:
     - target: {fileID: 7579770694704531346, guid: 12d46285bb9958841a0841660ffdab48,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.8
+      value: -38.1
       objectReference: {fileID: 0}
     - target: {fileID: 7579770694704531346, guid: 12d46285bb9958841a0841660ffdab48,
         type: 3}
@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 1750034113}
   m_Layer: 0
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1107,6 +1107,11 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6512902829972798950, guid: ac7bf2e74b01a104488ff2212cf79ba4,
+        type: 3}
+      propertyPath: timeline
+      value: 
+      objectReference: {fileID: 688878268}
     - target: {fileID: 8495597687208588539, guid: ac7bf2e74b01a104488ff2212cf79ba4,
         type: 3}
       propertyPath: m_Name
