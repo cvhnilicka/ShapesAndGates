@@ -31,7 +31,8 @@ public class Pivotor : MonoBehaviour
         const float tau = Mathf.PI * 2;
         float rawSinWave = Mathf.Sin(cycles * tau);
         rotationFactor = rawSinWave / 2f;
-        Vector3 rotationV = new Vector3(0, 0, 1) * Time.deltaTime * rotationFactor * degrees;
+        float amountToTurn = degrees * rotationFactor;
+        Vector3 rotationV = new Vector3(0, 0, 1) * Time.deltaTime * amountToTurn;
         transform.Rotate(rotationV);
     }
 }

@@ -103,6 +103,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4652783631987535387}
   - component: {fileID: 6251142723091723536}
+  - component: {fileID: 4591940208776519098}
+  - component: {fileID: 1339737593042180989}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -139,3 +141,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationVector: {x: 0, y: 0, z: 90}
   period: 4
+  degrees: 30
+--- !u!320 &4591940208776519098
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949909646045380788}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 2c5f2a86586d3e044ae61ce35c3a8a2c, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 1
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 1294173428203284637, guid: 2c5f2a86586d3e044ae61ce35c3a8a2c, type: 2}
+    value: {fileID: 1339737593042180989}
+  m_ExposedReferences:
+    m_References: []
+--- !u!95 &1339737593042180989
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949909646045380788}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
