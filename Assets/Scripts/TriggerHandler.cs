@@ -104,7 +104,7 @@ public class TriggerHandler : MonoBehaviour
     {
         GameObject death = Instantiate(deathFx, this.transform.position, Quaternion.identity);
         deathCounter.AddDeath();
-        // TODO NEED TO SOMEHOW RESET THE TRANSFORM TO ORIGINAL HERE
+        PlayerStats.AddDeath();
         gameObject.SetActive(false);
         
         Invoke("ReloadTimeline", .99f);

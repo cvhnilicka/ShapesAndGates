@@ -26,4 +26,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/VerticleWorld/NothingButSquares.unity
     guid: 714c65b3da5a94049931847d45d3ae81
+  - enabled: 1
+    path: Assets/Scenes/Levels/HorizontalWorld/HorizontalLevel1.unity
+    guid: d373f38418425c745a82b16418d66c78
+  - enabled: 1
+    path: Assets/Scenes/Levels/HorizontalWorld/HorizontalLevel2.unity
+    guid: 897ed540c3347924c8dfc0f6cd1ad887
+  - enabled: 1
+    path: Assets/Scenes/Levels/HorizontalWorld/HorizontalLevel3.unity
+    guid: d6939f567f065d84ea8bf3b22898ccd8
+  - enabled: 1
+    path: Assets/Scenes/MenuScreens/WinningScreen.unity
+    guid: c6f0af42ff438d243b04dae0ca60cb0f
   m_configObjects: {}
