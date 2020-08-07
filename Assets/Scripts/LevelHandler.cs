@@ -18,6 +18,7 @@ public class LevelHandler : MonoBehaviour
         int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextIndex >= numLevels)
         {
+            print("Total Number OF DEATHS: " + PlayerStats.Deaths);
             nextIndex = 0;
         }
         SceneManager.LoadScene(nextIndex);

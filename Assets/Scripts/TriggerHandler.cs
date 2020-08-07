@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class TriggerHandler : MonoBehaviour
 {
+    [Header("FX")]
     [SerializeField] GameObject deathFx;
+    [SerializeField] GameObject successFX;
 
     private float levelLoadDelay = 1.0f;
 
@@ -61,6 +63,12 @@ public class TriggerHandler : MonoBehaviour
     private void Success()
     {
         print("success");
+        GameObject newFx = Instantiate(successFX, this.transform.position, Quaternion.identity);
+        Invoke("LoadNextLevel", .99f);
+    }
+
+    private void LoadNextLevel()
+    {
         FindObjectOfType<LevelHandler>().LoadNextLevel();
     }
 
@@ -96,13 +104,11 @@ public class TriggerHandler : MonoBehaviour
     {
         GameObject death = Instantiate(deathFx, this.transform.position, Quaternion.identity);
         deathCounter.AddDeath();
-        // TODO NEED TO SOMEHOW RESET THE TRANSFORM TO ORIGINAL HERE
+        PlayerStats.AddDeath();
         gameObject.SetActive(false);
         
         Invoke("ReloadTimeline", .99f);
-        
-        //Destroy(gameObject);
-        
+                
     }
 
     private Color GetMatColor()

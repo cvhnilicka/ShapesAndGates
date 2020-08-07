@@ -82,11 +82,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSpeed: 30
   ySpeed: 30
-  lazers: []
   positionPitchFactor: -7
   positionYawFactor: 7
   controlPitchFactor: -25
   controlRollFactor: -25
+  xPosClamp: 0
+  xNegClamp: 0
+  yPosClamp: 0
+  yNegClamp: 0
 --- !u!114 &4246910116069760864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathFx: {fileID: 1424816280877768654, guid: 8b600eab8f8df9d4f98585a01959e72e, type: 3}
+  successFX: {fileID: 1424816280877768654, guid: b4bd0fa7d4f6ce948aec8f3e7049c77a,
+    type: 3}
   timeline: {fileID: 5307657969181088465, guid: 70cba8022bccb0f439c35b7ffd9ad99a,
     type: 3}
 --- !u!1 &7579770694704531351
