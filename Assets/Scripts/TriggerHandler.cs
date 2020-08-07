@@ -30,7 +30,7 @@ public class TriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        print("TRIGGER");
         if (other.tag == "Gate")
         {
             ProcessGateTrigger(other);
@@ -43,6 +43,7 @@ public class TriggerHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        print("COLLISION");
         // used for non gate collisions
         switch (collision.gameObject.tag)
         {
@@ -97,7 +98,7 @@ public class TriggerHandler : MonoBehaviour
         deathCounter.AddDeath();
         // TODO NEED TO SOMEHOW RESET THE TRANSFORM TO ORIGINAL HERE
         gameObject.SetActive(false);
-        gameObject.transform.SetPositionAndRotation(originalPos, origRotation);
+        
         Invoke("ReloadTimeline", .99f);
         
         //Destroy(gameObject);
@@ -143,6 +144,7 @@ public class TriggerHandler : MonoBehaviour
         timeline.time = 0;
         timeline.Stop();
         timeline.Evaluate();
+        gameObject.transform.SetPositionAndRotation(originalPos, origRotation);
         gameObject.SetActive(true);
         timeline.Play();
 
