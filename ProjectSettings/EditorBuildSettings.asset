@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScreens/LevelMenu.unity
     guid: 3ab6d9f449b820e41b39869e1d36ddb0
   - enabled: 1
-    path: Assets/Scenes/MenuScreens/Tutorial.unity
+    path: Assets/Scenes/Levels/Tutorial.unity
     guid: 5106bd33421813f41b744386b25fd7f1
   - enabled: 1
     path: Assets/Scenes/Levels/VerticleWorld/ColorSwitchIntro.unity
